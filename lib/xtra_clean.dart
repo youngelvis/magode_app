@@ -38,6 +38,8 @@ class XtraCleanPage extends StatelessWidget {
             ),
             Expanded(
               child: Container(
+                padding:
+                          const EdgeInsets.only(top: 15,),
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(color: Colors.green[600]),
                 child: OverflowBox(
