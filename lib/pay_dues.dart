@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'colors.dart' as color;
 
-class Paybills extends StatefulWidget {
+class Paydues extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _PaybillsState();
+    return _PayduesState();
   }
 }
 
@@ -23,7 +23,7 @@ class Pay {
   }
 }
 
-class _PaybillsState extends State<Paybills> {
+class _PayduesState extends State<Paydues> {
   final items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
   String? value;
   final accountController = TextEditingController();
@@ -64,7 +64,7 @@ class _PaybillsState extends State<Paybills> {
                     width: 110,
                   ),
                   Text(
-                    'Pay Bills',
+                    'Pay Dues',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                   )
                 ],
@@ -176,13 +176,14 @@ class _PaybillsState extends State<Paybills> {
                     height: 75,
                     decoration: BoxDecoration(
                         color: color.AppColor.homePageTheme,
-                        borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(9)),
                     child: RaisedButton(
                       onPressed: submitHansdler,
                       child: const Text(
-                        'Pay Bill',
-                        style: TextStyle(fontSize: 25, color: Colors.white),
+                        'Pay Dues',
+                        style: TextStyle(fontSize: 2589, color: Colors.white),
                       ),
+                      color: color.AppColor.homePageTheme,
                     ),
                   )
                 ],

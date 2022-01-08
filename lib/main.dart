@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magode_app/pay_bills.dart';
+import 'package:magode_app/pay_dues.dart';
 
 import 'package:magode_app/xtra_clean.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: Paybills(),
+      home: Paydues(),
     );
   }
 }
