@@ -3,57 +3,138 @@
 import 'package:flutter/material.dart';
 import 'colors.dart' as color;
 
-class Paydues extends StatefulWidget {
+class PayDues extends StatefulWidget {
+  const PayDues({Key? key}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() {
-    return _PayduesState();
-  }
+  _PayDuesState createState() => _PayDuesState();
 }
 
-// creating an instance of a payment
-class Pay {
-  String category = '';
-  String amount = '';
-  String account = '';
-  // making sure that i get all information
-  Pay({required this.category, required this.amount, required this.account}) {
-    assert(category != '');
-    assert(amount != '');
-    assert(account != '');
-  }
-}
+final _formKey = GlobalKey<FormState>();
 
-class _PayduesState extends State<Paydues> {
-  final items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
-  String? value;
+class _PayDuesState extends State<PayDues> {
   final accountController = TextEditingController();
   final amountController = TextEditingController();
+  String? selectedItem;
+  final items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    amountController.addListener(() {
-      setState(() {});
-    });
-    accountController.addListener(() {
-      setState(() {});
-    });
+    accountController.addListener(() => setState(() {}));
+    amountController.addListener(() => setState(() {}));
+  } // text field for the account
+
+  Widget _selectCategory() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(color: Colors.black45, width: 2)),
+      child: DropdownButtonFormField(
+        decoration: const InputDecoration(
+          errorStyle: TextStyle(fontSize: 15),
+          enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+        isExpanded: true,
+        hint: const Text(
+          'Select category',
+          style: TextStyle(fontSize: 20),
+        ),
+        value: selectedItem,
+        iconSize: 35,
+        icon: const Icon(Icons.arrow_drop_down, color: Colors.black45),
+        items: items.map(buildMenuItem).toList(),
+        onChanged: (value) => setState(() {
+          selectedItem = value as String;
+        }),
+        validator:(value)=> value == null ? 'select a category' : null,
+      ),
+    );
   }
 
-  void submitHansdler() {
-    setState(() {
-      Pay(
-          category: value as String,
-          amount: amountController as String,
-          account: accountController as String);
-    });
+  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+      value: item,
+      child: Text(
+        item,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      ));
+  Widget _buildAccount() {
+    return TextFormField(
+      controller: accountController,
+      decoration: InputDecoration(
+        errorStyle: const TextStyle(fontSize: 15),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black45,
+            width: 2,
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2)),
+        labelText: 'account',
+        labelStyle: const TextStyle(fontSize: 20),
+        hintText: 'account',
+        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
+        suffixIcon: accountController.text.isEmpty
+            ? Container(width: 0)
+            : IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () => accountController.clear(),
+              ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'please type account number';
+        } else {
+          return null;
+        }
+      },
+      keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.done,
+    );
+  }
+
+  // form for the amount
+  Widget _buildAmount() {
+    return TextFormField(
+      controller: amountController,
+      decoration: InputDecoration(
+        errorStyle: const TextStyle(fontSize: 15),
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.black45,
+              width: 2,
+            ),
+          ),
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.black, width: 2)),
+          labelText: 'Amount',
+          hintText: 'Amount',
+          hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
+          suffixIcon: amountController.text.isEmpty
+              ? Container(width: 0)
+              : IconButton(
+                  icon: const Icon(Icons.close),
+                  onPressed: () => amountController.clear(),
+                )),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'please type amount';
+        } else {
+          return null;
+        }
+      },
+      keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.done,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      child: Scaffold(
+          body: Container(
             color: color.AppColor.homePageBackground,
             padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
             child: Column(children: [
@@ -72,138 +153,56 @@ class _PayduesState extends State<Paydues> {
               const SizedBox(
                 height: 40,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  // drop down text field
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: Colors.black45, width: 2)),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton(
-                        isExpanded: true,
-                        hint: const Text(
-                          'Select category',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        value: value,
-                        iconSize: 35,
-                        icon: const Icon(Icons.arrow_drop_down,
-                            color: Colors.black45),
-                        items: items.map(buildMenuItem).toList(),
-                        onChanged: (value) => setState(() {
-                          this.value = value as String;
-                        }),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      _selectCategory(),
+                      const SizedBox(
+                        height: 20,
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  // amount text field
-                  Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(6)),
-                    child: TextField(
-                      controller: amountController,
-                      decoration: InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black45,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.black, width: 2)),
-                        hintText: 'Amount',
-                        hintStyle: const TextStyle(
-                            fontSize: 20, color: Colors.black45),
-                        suffixIcon: amountController.text.isEmpty
-                            ? Container(width: 0)
-                            : IconButton(
-                                icon: const Icon(Icons.close),
-                                onPressed: () => amountController.clear(),
-                              ),
+                      _buildAccount(),
+                      const SizedBox(
+                        height: 20,
                       ),
-                      keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.done,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  // account text field
-                  Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(6)),
-                    child: TextField(
-                      controller: accountController,
-                      decoration: InputDecoration(
-                        enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black45,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black, width: 2),
-                        ),
-                        hintText: 'Account',
-                        hintStyle: const TextStyle(
-                            fontSize: 20, color: Colors.black45),
-                        suffixIcon: accountController.text.isEmpty
-                            ? Container(width: 0)
-                            : IconButton(
-                                icon: const Icon(Icons.close),
-                                onPressed: () => accountController.clear(),
-                              ),
+                      _buildAmount(),
+                      const SizedBox(
+                        height: 50,
                       ),
-                      keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.done,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  //submit button
-                  Container(
-                    width: 150,
-                    height: 75,
-                    decoration: BoxDecoration(
-                        color: color.AppColor.homePageTheme,
-                        borderRadius: BorderRadius.circular(9)),
-                    child: RaisedButton(
-                      onPressed: submitHansdler,
-                      child: const Text(
-                        'Pay Dues',
-                        style: TextStyle(fontSize: 2589, color: Colors.white),
-                      ),
-                      color: color.AppColor.homePageTheme,
-                    ),
-                  )
-                ],
-              )
-            ])),
-        bottomNavigationBar: SizedBox(
-          height: 80,
-          child: BottomAppBar(
-            child: Icon(
-              Icons.home,
-              color: color.AppColor.homePageTheme,
-            ),
+                      Container(
+                        width: 150,
+                        height: 75,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: RaisedButton(
+                            color: color.AppColor.homePageTheme,
+                            child: Text(
+                              'Pay Dues',
+                              style: TextStyle(
+                                  color: color.AppColor.homePageBackground,
+                                  fontSize: 20),
+                            ),
+                            onPressed: () {
+                              final isValid = _formKey.currentState!.validate();
+                              if (isValid) {
+                                _formKey.currentState?.save();
+                              }
+                            }),
+                      )
+                    ],
+                  ))
+            ]),
           ),
-        ));
+          bottomNavigationBar: SizedBox(
+            height: 80,
+            child: BottomAppBar(
+              child: Icon(
+                Icons.home,
+                color: color.AppColor.homePageTheme,
+              ),
+            ),
+          )),
+    );
   }
-
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-      value: item,
-      child: Text(
-        item,
-        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-      ));
 }

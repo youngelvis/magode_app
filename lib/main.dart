@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:magode_app/pay_bills.dart';
+// import 'package:magode_app/pay_bills.dart';
 import 'package:magode_app/pay_dues.dart';
 
-import 'package:magode_app/xtra_clean.dart';
+// import 'package:magode_app/xtra_clean.dart';
 
 // import 'about_magodo.dart';
 // import 'do_and_dont.dart';
-// import 'emergency_service.dart';
+ //import 'emergency_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: Paydues(),
+      home: PayDues(),
     );
   }
 }
