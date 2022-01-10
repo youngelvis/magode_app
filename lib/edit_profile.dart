@@ -91,7 +91,6 @@ class _EditProfileState extends State<EditProfile> {
           return null;
         }
       },
-      keyboardType: TextInputType.number,
       textInputAction: TextInputAction.done,
     );
   }
@@ -163,7 +162,7 @@ class _EditProfileState extends State<EditProfile> {
           return null;
         }
       },
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.done,
     );
   }
@@ -271,7 +270,7 @@ class _EditProfileState extends State<EditProfile> {
           return null;
         }
       },
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.datetime,
       textInputAction: TextInputAction.done,
     );
   }
@@ -307,7 +306,7 @@ class _EditProfileState extends State<EditProfile> {
           return null;
         }
       },
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.datetime,
       textInputAction: TextInputAction.done,
     );
   }
@@ -379,7 +378,6 @@ class _EditProfileState extends State<EditProfile> {
           return null;
         }
       },
-      keyboardType: TextInputType.number,
       textInputAction: TextInputAction.done,
     );
   }
@@ -512,13 +510,14 @@ class _EditProfileState extends State<EditProfile> {
                                   height: 10,
                                 ),
                                 _buildResidentType(),
-                                const SizedBox(height: 25,),
+                                const SizedBox(
+                                  height: 25,
+                                ),
                                 Container(
                                   width: 180,
                                   height: 50,
                                   decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(20)),
+                                      borderRadius: BorderRadius.circular(20)),
                                   child: RaisedButton(
                                       color: color.AppColor.homePageTheme,
                                       child: Text(
