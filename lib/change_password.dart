@@ -3,24 +3,24 @@
 import 'package:flutter/material.dart';
 import 'colors.dart' as color;
 
-class AuthorizedUsers extends StatefulWidget {
-  const AuthorizedUsers({Key? key}) : super(key: key);
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({Key? key}) : super(key: key);
 
   @override
-  _AuthorizedUsersState createState() => _AuthorizedUsersState();
+  _ChangePasswordState createState() => _ChangePasswordState();
 }
 
-class _AuthorizedUsersState extends State<AuthorizedUsers> {
+class _ChangePasswordState extends State<ChangePassword> {
   final _formKey = GlobalKey<FormState>();
-  final password = TextEditingController();
-  final fullName = TextEditingController();
-  final phoneNumber = TextEditingController();
-  final email = TextEditingController();
+  final residentCode = TextEditingController();
+  final residentName = TextEditingController();
+  final currentPassword = TextEditingController();
+  final newPassword = TextEditingController();
   final confirmPassword = TextEditingController();
 
-  Widget _buildPassword() {
+  Widget _buildResidentName() {
     return TextFormField(
-      controller: password,
+      controller: residentName,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -31,50 +31,15 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'password',
+        labelText: 'Resident Name',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'password',
+        hintText: 'Resident Name',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: residentName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => password.clear(),
-              ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please type your Password';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
-
-  Widget _buildFullName() {
-    return TextFormField(
-      controller: fullName,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
-        ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Full name',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Full name',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => fullName.clear(),
+                onPressed: () => residentName.clear(),
               ),
       ),
       validator: (value) {
@@ -88,9 +53,9 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
     );
   }
 
-  Widget _buildPhoneNumber() {
+  Widget _buildResidentCode() {
     return TextFormField(
-      controller: phoneNumber,
+      controller: residentCode,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -101,20 +66,20 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Phone Number',
+        labelText: 'Resident Code',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'phone Number',
+        hintText: 'Resident Code',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: phoneNumber.text.isEmpty
+        suffixIcon: residentCode.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => fullName.clear(),
+                onPressed: () => residentCode.clear(),
               ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'please type your Full name';
+          return 'please type your Resident code';
         } else {
           return null;
         }
@@ -124,9 +89,9 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
     );
   }
 
-  Widget _buildEmail() {
+  Widget _buildCurrentPassword() {
     return TextFormField(
-      controller: email,
+      controller: currentPassword,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -137,20 +102,20 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Email',
+        labelText: 'Current Password',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Email',
+        hintText: 'Current Password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: residentName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => email.clear(),
+                onPressed: () => currentPassword.clear(),
               ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'please type your email';
+          return 'please type your current Password';
         } else {
           return null;
         }
@@ -177,7 +142,7 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Confirm Password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: confirmPassword.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
@@ -187,7 +152,7 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'please confirm password';
-        } else if (value != password.text) {
+        } else if (value != newPassword.text) {
           return 'password doesnt match';
         } else {
           return null;
@@ -197,15 +162,39 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
     );
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    fullName.addListener(() => setState(() {}));
-    phoneNumber.addListener(() => setState(() {}));
-    email.addListener(() => setState(() {}));
-    password.addListener(() => setState(() {}));
-    confirmPassword.addListener(() => setState(() {}));
+  Widget _buildPassword() {
+    return TextFormField(
+      controller: newPassword,
+      decoration: InputDecoration(
+        errorStyle: const TextStyle(fontSize: 15),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black45,
+            width: 2,
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2)),
+        labelText: 'New password',
+        labelStyle: const TextStyle(fontSize: 20),
+        hintText: 'New password',
+        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
+        suffixIcon: newPassword.text.isEmpty
+            ? Container(width: 0)
+            : IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () => newPassword.clear(),
+              ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'please type your new password';
+        } else {
+          return null;
+        }
+      },
+      textInputAction: TextInputAction.done,
+    );
   }
 
   @override
@@ -234,69 +223,60 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
                 height: 40,
               ),
               Expanded(
-                child: OverflowBox(
-                  child: SingleChildScrollView(
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            _buildFullName(),
-                            const SizedBox(
-                              height: 10,
+                  child: OverflowBox(
+                      child: SingleChildScrollView(
+                          child: Form(
+                key: _formKey,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      _buildResidentCode(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      _buildResidentName(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      _buildCurrentPassword(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      _buildPassword(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      _buildConfirmPassword(),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Container(
+                        width: 200,
+                        height: 55,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: RaisedButton(
+                            color:
+                                color.AppColor.homePageTheme.withOpacity(0.8),
+                            child: Text(
+                              'Change Password',
+                              style: TextStyle(
+                                  color: color.AppColor.homePageBackground,
+                                  fontSize: 20),
                             ),
-                            _buildEmail(),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            _buildPhoneNumber(),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            _buildPassword(),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            _buildConfirmPassword(),
-                            const SizedBox(height: 25),
-                            Container(
-                              width: 240,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: RaisedButton(
-                                  color: color.AppColor.homePageTheme.withOpacity(0.8),
-                                  child: Text(
-                                    'Add Authorized User',
-                                    style: TextStyle(
-                                        color:
-                                            color.AppColor.homePageBackground,
-                                        fontSize: 20),
-                                  ),
-                                  onPressed: () {
-                                    final isValid =
-                                        _formKey.currentState!.validate();
-                                    if (isValid) {
-                                      _formKey.currentState?.save();
-                                    }
-                                  }),
-                            ),
-                            const SizedBox(height: 28,),
-                            RaisedButton(onPressed: (){},
-                            shape:const RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.black,
-                              width: 2)),
-                            color: color.AppColor.homePageBackground,
-                            child: const Text('Dependents'),),
-                          ]),
-                    ),
-                  ),
-                ),
-              ),
+                            onPressed: () {
+                              final isValid = _formKey.currentState!.validate();
+                              if (isValid) {
+                                _formKey.currentState?.save();
+                              }
+                            }),
+                      ),
+                    ]),
+              ))))
             ],
           ),
         ),
-        bottomNavigationBar: SizedBox(
+         bottomNavigationBar: SizedBox(
           height: 80,
           child: BottomAppBar(
             child: Icon(

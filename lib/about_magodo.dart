@@ -73,7 +73,7 @@ class AboutPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 80,
         child: BottomAppBar(
           child: Icon(
