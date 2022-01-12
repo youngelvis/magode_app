@@ -12,21 +12,21 @@ class EditProfile extends StatefulWidget {
 
 class _EditProfileState extends State<EditProfile> {
   final _formKey = GlobalKey<FormState>();
-  final residentcode = TextEditingController();
-  final fullName = TextEditingController();
-  final phoneNumber = TextEditingController();
-  final email = TextEditingController();
-  final classification = TextEditingController();
-  final status = TextEditingController();
-  final valadityStartsDate = TextEditingController();
-  final validityEndsDate = TextEditingController();
-  final zone = TextEditingController();
-  final address = TextEditingController();
-  final residentType = TextEditingController();
+  final _residentcode = TextEditingController();
+  final _fullName = TextEditingController();
+  final _phoneNumber = TextEditingController();
+  final _email = TextEditingController();
+  final _classification = TextEditingController();
+  final _status = TextEditingController();
+  final _valadityStartsDate = TextEditingController();
+  final _validityEndsDate = TextEditingController();
+  final _zone = TextEditingController();
+  final _address = TextEditingController();
+  final _residentType = TextEditingController();
 
   Widget _buildResidentCode() {
     return TextFormField(
-      controller: residentcode,
+      controller: _residentcode,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -41,11 +41,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Resident Code',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: residentcode.text.isEmpty
+        suffixIcon: _residentcode.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => residentcode.clear(),
+                onPressed: () => _residentcode.clear(),
               ),
       ),
       validator: (value) {
@@ -62,7 +62,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildFullName() {
     return TextFormField(
-      controller: fullName,
+      controller: _fullName,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -77,11 +77,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Full name',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: _fullName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => fullName.clear(),
+                onPressed: () => _fullName.clear(),
               ),
       ),
       validator: (value) {
@@ -97,7 +97,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildPhoneNumber() {
     return TextFormField(
-      controller: phoneNumber,
+      controller: _phoneNumber,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -112,11 +112,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Phone Number',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: phoneNumber.text.isEmpty
+        suffixIcon: _phoneNumber.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => phoneNumber.clear(),
+                onPressed: () => _phoneNumber.clear(),
               ),
       ),
       validator: (value) {
@@ -133,7 +133,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildEmail() {
     return TextFormField(
-      controller: email,
+      controller: _email,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -148,11 +148,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Email',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: email.text.isEmpty
+        suffixIcon: _email.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => email.clear(),
+                onPressed: () => _email.clear(),
               ),
       ),
       validator: (value) {
@@ -169,7 +169,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildClassification() {
     return TextFormField(
-      controller: classification,
+      controller: _classification,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -184,11 +184,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Classification',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: classification.text.isEmpty
+        suffixIcon: _classification.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => classification.clear(),
+                onPressed: () => _classification.clear(),
               ),
       ),
       validator: (value) {
@@ -205,7 +205,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildStatus() {
     return TextFormField(
-      controller: status,
+      controller: _status,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -220,11 +220,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Status',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: status.text.isEmpty
+        suffixIcon: _status.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => status.clear(),
+                onPressed: () => _status.clear(),
               ),
       ),
       validator: (value) {
@@ -241,7 +241,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildValidityStartDate() {
     return TextFormField(
-      controller: valadityStartsDate,
+      controller: _valadityStartsDate,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -256,11 +256,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Validity Starts Dates',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: valadityStartsDate.text.isEmpty
+        suffixIcon: _valadityStartsDate.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => valadityStartsDate.clear(),
+                onPressed: () => _valadityStartsDate.clear(),
               ),
       ),
       validator: (value) {
@@ -277,7 +277,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildValidityEndsDate() {
     return TextFormField(
-      controller: validityEndsDate,
+      controller: _validityEndsDate,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -292,11 +292,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Validity Ends Dates',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: validityEndsDate.text.isEmpty
+        suffixIcon: _validityEndsDate.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => validityEndsDate.clear(),
+                onPressed: () => _validityEndsDate.clear(),
               ),
       ),
       validator: (value) {
@@ -313,7 +313,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildZone() {
     return TextFormField(
-      controller: zone,
+      controller: _zone,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -328,11 +328,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Zone',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: zone.text.isEmpty
+        suffixIcon: _zone.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => zone.clear(),
+                onPressed: () => _zone.clear(),
               ),
       ),
       validator: (value) {
@@ -349,7 +349,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildAddress() {
     return TextFormField(
-      controller: address,
+      controller: _address,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -364,11 +364,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Address',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: address.text.isEmpty
+        suffixIcon: _address.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => address.clear(),
+                onPressed: () => _address.clear(),
               ),
       ),
       validator: (value) {
@@ -384,7 +384,7 @@ class _EditProfileState extends State<EditProfile> {
 
   Widget _buildResidentType() {
     return TextFormField(
-      controller: residentType,
+      controller: _residentType,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -399,11 +399,11 @@ class _EditProfileState extends State<EditProfile> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Resident Type',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: residentType.text.isEmpty
+        suffixIcon: _residentType.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => residentType.clear(),
+                onPressed: () => _residentType.clear(),
               ),
       ),
       validator: (value) {
@@ -422,17 +422,17 @@ class _EditProfileState extends State<EditProfile> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    residentcode.addListener(() => setState(() {}));
-    fullName.addListener(() => setState(() {}));
-    phoneNumber.addListener(() => setState(() {}));
-    email.addListener(() => setState(() {}));
-    classification.addListener(() => setState(() {}));
-    status.addListener(() => setState(() {}));
-    valadityStartsDate.addListener(() => setState(() {}));
-    validityEndsDate.addListener(() => setState(() {}));
-    zone.addListener(() => setState(() {}));
-    address.addListener(() => setState(() {}));
-    residentType.addListener(() => setState(() {}));
+    _residentcode.addListener(() => setState(() {}));
+    _fullName.addListener(() => setState(() {}));
+    _phoneNumber.addListener(() => setState(() {}));
+    _email.addListener(() => setState(() {}));
+    _classification.addListener(() => setState(() {}));
+    _status.addListener(() => setState(() {}));
+    _valadityStartsDate.addListener(() => setState(() {}));
+    _validityEndsDate.addListener(() => setState(() {}));
+    _zone.addListener(() => setState(() {}));
+    _address.addListener(() => setState(() {}));
+    _residentType.addListener(() => setState(() {}));
   }
 
   @override

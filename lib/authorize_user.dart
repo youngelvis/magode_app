@@ -13,15 +13,15 @@ class AuthorizedUsers extends StatefulWidget {
 class _AuthorizedUsersState extends State<AuthorizedUsers> {
  
   final _formKey = GlobalKey<FormState>();
-  final password = TextEditingController();
-  final fullName = TextEditingController();
-  final phoneNumber = TextEditingController();
-  final email = TextEditingController();
-  final confirmPassword = TextEditingController();
+  final _password = TextEditingController();
+  final _fullName = TextEditingController();
+  final _phoneNumber = TextEditingController();
+  final _email = TextEditingController();
+  final _confirmPassword = TextEditingController();
 
   Widget _buildPassword() {
     return TextFormField(
-      controller: password,
+      controller: _password,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -36,11 +36,11 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: _fullName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => password.clear(),
+                onPressed: () => _password.clear(),
               ),
       ),
       validator: (value) {
@@ -56,7 +56,7 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
 
   Widget _buildFullName() {
     return TextFormField(
-      controller: fullName,
+      controller: _fullName,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -71,11 +71,11 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Full name',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: _fullName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => fullName.clear(),
+                onPressed: () => _fullName.clear(),
               ),
       ),
       validator: (value) {
@@ -91,7 +91,7 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
 
   Widget _buildPhoneNumber() {
     return TextFormField(
-      controller: phoneNumber,
+      controller: _phoneNumber,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -106,11 +106,11 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'phone Number',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: phoneNumber.text.isEmpty
+        suffixIcon: _phoneNumber.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => fullName.clear(),
+                onPressed: () => _fullName.clear(),
               ),
       ),
       validator: (value) {
@@ -127,7 +127,7 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
 
   Widget _buildEmail() {
     return TextFormField(
-      controller: email,
+      controller: _email,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -142,11 +142,11 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Email',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: _fullName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => email.clear(),
+                onPressed: () => _email.clear(),
               ),
       ),
       validator: (value) {
@@ -163,7 +163,7 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
 
   Widget _buildConfirmPassword() {
     return TextFormField(
-      controller: confirmPassword,
+      controller: _confirmPassword,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -178,17 +178,17 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Confirm Password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: fullName.text.isEmpty
+        suffixIcon: _fullName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => confirmPassword.clear(),
+                onPressed: () => _confirmPassword.clear(),
               ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'please confirm password';
-        } else if (value != password.text) {
+        } else if (value != _password.text) {
           return 'password doesnt match';
         } else {
           return null;
@@ -202,11 +202,11 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    fullName.addListener(() => setState(() {}));
-    phoneNumber.addListener(() => setState(() {}));
-    email.addListener(() => setState(() {}));
-    password.addListener(() => setState(() {}));
-    confirmPassword.addListener(() => setState(() {}));
+    _fullName.addListener(() => setState(() {}));
+    _phoneNumber.addListener(() => setState(() {}));
+    _email.addListener(() => setState(() {}));
+    _password.addListener(() => setState(() {}));
+    _confirmPassword.addListener(() => setState(() {}));
   }
 
   @override

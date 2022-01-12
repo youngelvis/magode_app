@@ -13,16 +13,16 @@ class PayBill extends StatefulWidget {
 final _formKey = GlobalKey<FormState>();
 
 class _PayBillState extends State<PayBill> {
-  final accountController = TextEditingController();
-  final amountController = TextEditingController();
+  final _accountController = TextEditingController();
+  final _amountController = TextEditingController();
   String? selectedItem;
   final items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 
   @override
   void initState() {
     super.initState();
-    accountController.addListener(() => setState(() {}));
-    amountController.addListener(() => setState(() {}));
+    _accountController.addListener(() => setState(() {}));
+    _amountController.addListener(() => setState(() {}));
   } // text field for the account
 
   Widget _selectCategory() {
@@ -60,7 +60,7 @@ class _PayBillState extends State<PayBill> {
       ));
   Widget _buildAccount() {
     return TextFormField(
-      controller: accountController,
+      controller: _accountController,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -75,11 +75,11 @@ class _PayBillState extends State<PayBill> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'account',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: accountController.text.isEmpty
+        suffixIcon: _accountController.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => accountController.clear(),
+                onPressed: () => _accountController.clear(),
               ),
       ),
       validator: (value) {
@@ -97,7 +97,7 @@ class _PayBillState extends State<PayBill> {
   // form for the amount
   Widget _buildAmount() {
     return TextFormField(
-      controller: amountController,
+      controller: _amountController,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
           enabledBorder: const OutlineInputBorder(
@@ -111,11 +111,11 @@ class _PayBillState extends State<PayBill> {
           labelText: 'Amount',
           hintText: 'Amount',
           hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-          suffixIcon: amountController.text.isEmpty
+          suffixIcon: _amountController.text.isEmpty
               ? Container(width: 0)
               : IconButton(
                   icon: const Icon(Icons.close),
-                  onPressed: () => amountController.clear(),
+                  onPressed: () => _amountController.clear(),
                 )),
       validator: (value) {
         if (value == null || value.isEmpty) {

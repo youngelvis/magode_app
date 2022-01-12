@@ -12,15 +12,15 @@ class ChangePassword extends StatefulWidget {
 
 class _ChangePasswordState extends State<ChangePassword> {
   final _formKey = GlobalKey<FormState>();
-  final residentCode = TextEditingController();
-  final residentName = TextEditingController();
-  final currentPassword = TextEditingController();
-  final newPassword = TextEditingController();
-  final confirmPassword = TextEditingController();
+  final _residentCode = TextEditingController();
+  final _residentName = TextEditingController();
+  final _currentPassword = TextEditingController();
+  final _newPassword = TextEditingController();
+  final _confirmPassword = TextEditingController();
 
   Widget _buildResidentName() {
     return TextFormField(
-      controller: residentName,
+      controller: _residentName,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -35,11 +35,11 @@ class _ChangePasswordState extends State<ChangePassword> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Resident Name',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: residentName.text.isEmpty
+        suffixIcon: _residentName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => residentName.clear(),
+                onPressed: () => _residentName.clear(),
               ),
       ),
       validator: (value) {
@@ -55,7 +55,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   Widget _buildResidentCode() {
     return TextFormField(
-      controller: residentCode,
+      controller: _residentCode,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -70,11 +70,11 @@ class _ChangePasswordState extends State<ChangePassword> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Resident Code',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: residentCode.text.isEmpty
+        suffixIcon: _residentCode.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => residentCode.clear(),
+                onPressed: () => _residentCode.clear(),
               ),
       ),
       validator: (value) {
@@ -91,7 +91,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   Widget _buildCurrentPassword() {
     return TextFormField(
-      controller: currentPassword,
+      controller: _currentPassword,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -106,11 +106,11 @@ class _ChangePasswordState extends State<ChangePassword> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Current Password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: residentName.text.isEmpty
+        suffixIcon: _residentName.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => currentPassword.clear(),
+                onPressed: () => _currentPassword.clear(),
               ),
       ),
       validator: (value) {
@@ -127,7 +127,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   Widget _buildConfirmPassword() {
     return TextFormField(
-      controller: confirmPassword,
+      controller: _confirmPassword,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -142,17 +142,17 @@ class _ChangePasswordState extends State<ChangePassword> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Confirm Password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: confirmPassword.text.isEmpty
+        suffixIcon: _confirmPassword.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => confirmPassword.clear(),
+                onPressed: () => _confirmPassword.clear(),
               ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'please confirm password';
-        } else if (value != newPassword.text) {
+        } else if (value != _newPassword.text) {
           return 'password doesnt match';
         } else {
           return null;
@@ -164,7 +164,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
   Widget _buildPassword() {
     return TextFormField(
-      controller: newPassword,
+      controller: _newPassword,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -179,11 +179,11 @@ class _ChangePasswordState extends State<ChangePassword> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'New password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: newPassword.text.isEmpty
+        suffixIcon: _newPassword.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => newPassword.clear(),
+                onPressed: () => _newPassword.clear(),
               ),
       ),
       validator: (value) {
@@ -201,11 +201,11 @@ class _ChangePasswordState extends State<ChangePassword> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    residentCode.addListener(() => setState(() {}));
-    residentName.addListener(() => setState(() {}));
-    currentPassword.addListener(() => setState(() {}));
-    newPassword.addListener(() => setState(() {}));
-    confirmPassword.addListener(() => setState(() {}));
+    _residentCode.addListener(() => setState(() {}));
+    _residentName.addListener(() => setState(() {}));
+    _currentPassword.addListener(() => setState(() {}));
+    _newPassword.addListener(() => setState(() {}));
+    _confirmPassword.addListener(() => setState(() {}));
   }
 
   @override

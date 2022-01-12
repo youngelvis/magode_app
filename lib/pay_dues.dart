@@ -13,16 +13,16 @@ class PayDues extends StatefulWidget {
 final _formKey = GlobalKey<FormState>();
 
 class _PayDuesState extends State<PayDues> {
-  final accountController = TextEditingController();
-  final amountController = TextEditingController();
-  String? selectedItem;
+  final _accountController = TextEditingController();
+  final _amountController = TextEditingController();
+  String? _selectedItem;
   final items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 
   @override
   void initState() {
     super.initState();
-    accountController.addListener(() => setState(() {}));
-    amountController.addListener(() => setState(() {}));
+    _accountController.addListener(() => setState(() {}));
+    _amountController.addListener(() => setState(() {}));
   } // text field for the account
 
   Widget _selectCategory() {
@@ -40,12 +40,12 @@ class _PayDuesState extends State<PayDues> {
           'Select category',
           style: TextStyle(fontSize: 20),
         ),
-        value: selectedItem,
+        value: _selectedItem,
         iconSize: 35,
         icon: const Icon(Icons.arrow_drop_down, color: Colors.black45),
         items: items.map(buildMenuItem).toList(),
         onChanged: (value) => setState(() {
-          selectedItem = value as String;
+          _selectedItem = value as String;
         }),
         validator:(value)=> value == null ? 'select a category' : null,
       ),
@@ -58,9 +58,10 @@ class _PayDuesState extends State<PayDues> {
         item,
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ));
+  
   Widget _buildAccount() {
     return TextFormField(
-      controller: accountController,
+      controller: _accountController,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -75,11 +76,11 @@ class _PayDuesState extends State<PayDues> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'account',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: accountController.text.isEmpty
+        suffixIcon: _accountController.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => accountController.clear(),
+                onPressed: () => _accountController.clear(),
               ),
       ),
       validator: (value) {
@@ -97,7 +98,7 @@ class _PayDuesState extends State<PayDues> {
   // form for the amount
   Widget _buildAmount() {
     return TextFormField(
-      controller: amountController,
+      controller: _amountController,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
           enabledBorder: const OutlineInputBorder(
@@ -111,11 +112,11 @@ class _PayDuesState extends State<PayDues> {
           labelText: 'Amount',
           hintText: 'Amount',
           hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-          suffixIcon: amountController.text.isEmpty
+          suffixIcon: _amountController.text.isEmpty
               ? Container(width: 0)
               : IconButton(
                   icon: const Icon(Icons.close),
-                  onPressed: () => amountController.clear(),
+                  onPressed: () => _amountController.clear(),
                 )),
       validator: (value) {
         if (value == null || value.isEmpty) {
