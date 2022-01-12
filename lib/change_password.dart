@@ -198,6 +198,17 @@ class _ChangePasswordState extends State<ChangePassword> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    residentCode.addListener(() => setState(() {}));
+    residentName.addListener(() => setState(() {}));
+    currentPassword.addListener(() => setState(() {}));
+    newPassword.addListener(() => setState(() {}));
+    confirmPassword.addListener(() => setState(() {}));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
@@ -276,7 +287,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             ],
           ),
         ),
-         bottomNavigationBar: SizedBox(
+        bottomNavigationBar: SizedBox(
           height: 80,
           child: BottomAppBar(
             child: Icon(
