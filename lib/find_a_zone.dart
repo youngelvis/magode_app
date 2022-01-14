@@ -67,7 +67,7 @@ class _FindZoneState extends State<FindZone> {
                       width: 110,
                     ),
                     Text(
-                      'Find a zone/',
+                      'Find a zone',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                     )
