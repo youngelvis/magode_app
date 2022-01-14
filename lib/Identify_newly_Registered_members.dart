@@ -1,4 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'colors.dart' as color;
 
 class Indentify_NR_Members extends StatefulWidget {
   const Indentify_NR_Members({Key? key}) : super(key: key);
@@ -103,9 +107,9 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Validity Starts Dates',
+        labelText: 'Validity Starts Dates (mm/dd/yyyy)',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Validity Starts Dates',
+        hintText: 'Validity Starts Dates (mm/dd/yyyy)',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
         suffixIcon: _validityStart.text.isEmpty
             ? Container(width: 0)
@@ -139,9 +143,9 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Validity Ends Dates',
+        labelText: 'Validity Ends Dates (mm/dd/yyyy)',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Validity Ends Dates',
+        hintText: 'Validity Ends Dates (mm/dd/yyyy)',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
         suffixIcon: _validityEnds.text.isEmpty
             ? Container(width: 0)
@@ -269,7 +273,7 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
     );
   }
 
-  Widget _selectCategory() {
+  Widget _selectResident() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
@@ -303,9 +307,160 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
         item,
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ));
+// the state below is for clearing the input field
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _firstName.addListener(() => setState(() {}));
+    _mobileNumber.addListener(() => setState(() {}));
+    _address.addListener(() => setState(() {}));
+    _zone.addListener(() => setState(() {}));
+    _validityEnds.addListener(() => setState(() {}));
+    _validityStart.addListener(() => setState(() {}));
+    _status.addListener(() => setState(() {}));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      child: Scaffold(
+        body: Container(
+          color: color.AppColor.homePageBackground,
+          child: Column(
+            children: [
+              Container(
+                height: 150,
+                decoration: BoxDecoration(color: color.AppColor.homePageTheme),
+                child: Container(
+                  padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
+                  child: Row(
+                    children: [
+                      Icon(
+                        CupertinoIcons.person_crop_circle,
+                        size: 80,
+                      ),
+                      Expanded(child: Container()),
+                      Icon(Icons.menu, size: 40, color: Colors.black),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              const Text('Identify Newly Register Members',
+                  style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800)),
+              const SizedBox(
+                height: 40,
+              ),
+              Expanded(
+                child: OverflowBox(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formKey,
+                      child: Container(
+                        padding: const EdgeInsets.only( left: 30, right: 30),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              _selectResident(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildFirstName(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildMobileNumber(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildAddress(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildZone(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildValidityStart(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildValidityEnds(),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              _buildStatus(),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20)),
+                                    child: RaisedButton(
+                                        color: color.AppColor.homePageTheme,
+                                        child: Text(
+                                          'Authorize',
+                                          style: TextStyle(
+                                              color: color
+                                                  .AppColor.homePageBackground,
+                                              fontSize: 20),
+                                        ),
+                                        onPressed: () {
+                                          final isValid =
+                                              _formKey.currentState!.validate();
+                                          if (isValid) {
+                                            _formKey.currentState?.save();
+                                          }
+                                        }),
+                                  ),
+                                  const SizedBox(height: 15,),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20)),
+                                    child: RaisedButton(
+                                        color: color.AppColor.homePageTheme,
+                                        child: Text(
+                                          'Decline',
+                                          style: TextStyle(
+                                              color: color
+                                                  .AppColor.homePageBackground,
+                                              fontSize: 20),
+                                        ),
+                                        onPressed: () {
+                                          
+                                        }),
+                                  ),
+                                  SizedBox(height: 130)
+                            ]),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+         bottomNavigationBar: SizedBox(
+              height: 80,
+              child: BottomAppBar(
+                color: Colors.brown,
+                child: Icon(
+                  Icons.home,
+                  color: color.AppColor.homePageTheme,
+                  
+                ),
+              ),
+            )
+      ),
+    );
   }
 }

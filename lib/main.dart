@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magode_app/Identify_newly_Registered_members.dart';
 import 'package:magode_app/add_staff.dart';
 import 'package:magode_app/authorize_user.dart';
 import 'package:magode_app/change_password.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: AddStaff(),
+      home: Indentify_NR_Members(),
     );
   }
 }
