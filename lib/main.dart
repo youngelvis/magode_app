@@ -4,6 +4,7 @@ import 'package:magode_app/add_staff.dart';
 import 'package:magode_app/authorize_user.dart';
 import 'package:magode_app/change_password.dart';
 import 'package:magode_app/edit_profile.dart';
+import 'package:magode_app/find_a_zone.dart';
 import 'package:magode_app/pay_bills.dart';
 // import 'package:magode_app/pay_bills.dart';
 import 'package:magode_app/pay_dues.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: Indentify_NR_Members(),
+      home: FindZone(),
     );
   }
 }
