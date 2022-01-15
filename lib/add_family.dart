@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'colors.dart' as color;
+
 class AddFamily extends StatefulWidget {
-  const AddFamily({ Key? key }) : super(key: key);
+  const AddFamily({Key? key}) : super(key: key);
 
   @override
   _AddFamilyState createState() => _AddFamilyState();
@@ -11,46 +12,11 @@ class AddFamily extends StatefulWidget {
 
 class _AddFamilyState extends State<AddFamily> {
   final _formKey = GlobalKey<FormState>();
-  final _password = TextEditingController();
   final _fullName = TextEditingController();
   final _phoneNumber = TextEditingController();
   final _email = TextEditingController();
+  final _password = TextEditingController();
   final _confirmPassword = TextEditingController();
-
-  Widget _buildPassword() {
-    return TextFormField(
-      controller: _password,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
-        ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'password',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'password',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: _fullName.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => _password.clear(),
-              ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please type your Password';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
 
   Widget _buildFullName() {
     return TextFormField(
@@ -195,8 +161,43 @@ class _AddFamilyState extends State<AddFamily> {
       textInputAction: TextInputAction.done,
     );
   }
- 
- @override
+
+  Widget _buildPassword() {
+    return TextFormField(
+      controller: _password,
+      decoration: InputDecoration(
+        errorStyle: const TextStyle(fontSize: 15),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black45,
+            width: 2,
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2)),
+        labelText: 'password',
+        labelStyle: const TextStyle(fontSize: 20),
+        hintText: 'password',
+        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
+        suffixIcon: _fullName.text.isEmpty
+            ? Container(width: 0)
+            : IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () => _password.clear(),
+              ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'please type your Password';
+        } else {
+          return null;
+        }
+      },
+      textInputAction: TextInputAction.done,
+    );
+  }
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -264,7 +265,8 @@ class _AddFamilyState extends State<AddFamily> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20)),
                               child: RaisedButton(
-                                  color: color.AppColor.homePageTheme.withOpacity(0.8),
+                                  color: color.AppColor.homePageTheme
+                                      .withOpacity(0.8),
                                   child: Text(
                                     'Add Family',
                                     style: TextStyle(
@@ -280,13 +282,17 @@ class _AddFamilyState extends State<AddFamily> {
                                     }
                                   }),
                             ),
-                            const SizedBox(height: 28,),
-                            RaisedButton(onPressed: (){},
-                            shape:const RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.black,
-                              width: 2)),
-                            color: color.AppColor.homePageBackground,
-                            child: const Text('Dependents: Family Members'),),
+                            const SizedBox(
+                              height: 28,
+                            ),
+                            RaisedButton(
+                              onPressed: () {},
+                              shape: const RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      color: Colors.black, width: 2)),
+                              color: color.AppColor.homePageBackground,
+                              child: const Text('Dependents: Family Members'),
+                            ),
                           ]),
                     ),
                   ),
@@ -296,7 +302,6 @@ class _AddFamilyState extends State<AddFamily> {
           ),
         ),
         bottomNavigationBar: SizedBox(
-          
           height: 80,
           child: BottomAppBar(
             color: Colors.brown,

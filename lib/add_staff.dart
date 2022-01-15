@@ -392,7 +392,7 @@ class _AddStaffState extends State<AddStaff> {
                             _buildAgentDetail(),
                             const SizedBox(height: 25),
                             Container(
-                              width: 200,
+                              width: MediaQuery.of(context).size.width,
                               height: 60,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20)),
