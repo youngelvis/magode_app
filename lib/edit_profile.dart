@@ -546,6 +546,7 @@ class _EditProfileState extends State<EditProfile> {
             bottomNavigationBar: SizedBox(
               height: 80,
               child: BottomAppBar(
+                color: color.AppColor.homeSecondaryTheme,
                 child: Icon(
                   Icons.home,
                   color: color.AppColor.homePageTheme,

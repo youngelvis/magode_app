@@ -11,14 +11,15 @@ class AuthorizedUsers extends StatefulWidget {
 }
 
 class _AuthorizedUsersState extends State<AuthorizedUsers> {
- 
+ // Private varable
   final _formKey = GlobalKey<FormState>();
-  final _password = TextEditingController();
+  final _email = TextEditingController();
   final _fullName = TextEditingController();
   final _phoneNumber = TextEditingController();
-  final _email = TextEditingController();
+  final _password = TextEditingController();
   final _confirmPassword = TextEditingController();
 
+// methods
   Widget _buildPassword() {
     return TextFormField(
       controller: _password,

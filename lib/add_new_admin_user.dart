@@ -40,6 +40,23 @@ class _AddNewAdminState extends State<AddNewAdmin> {
   final _validityEndsDate = TextEditingController();
   final _password = TextEditingController();
   final _confirmPassword = TextEditingController();
+  // state for clearing textfield
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    residentCode.addListener(() => setState(() {}));
+    _fullName.addListener(() => setState(() {}));
+    _mobileNumber.addListener(() => setState(() {}));
+    _email.addListener(() => setState(() {}));
+    _password.addListener(() => setState(() {}));
+    _confirmPassword.addListener(() => setState(() {}));
+    _address.addListener(() => setState(() {}));
+    _valadityStartsDate.addListener(() => setState(() {}));
+    _validityEndsDate.addListener(() => setState(() {}));
+    _password.addListener(() => setState(() {}));
+
+  }
+
   //methods
   Widget _buildResidentCode() {
     return TextFormField(
@@ -491,7 +508,7 @@ class _AddNewAdminState extends State<AddNewAdmin> {
                   padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         CupertinoIcons.person_crop_circle,
                         size: 80,
                       ),
@@ -602,7 +619,6 @@ class _AddNewAdminState extends State<AddNewAdmin> {
           ),
         ),
         bottomNavigationBar: SizedBox(
-          
           height: 80,
           child: BottomAppBar(
             color: Colors.brown,
