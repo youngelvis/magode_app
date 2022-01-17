@@ -74,7 +74,7 @@ class _AddFamilyState extends State<AddFamily> {
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => _fullName.clear(),
+                onPressed: () => _phoneNumber.clear(),
               ),
       ),
       validator: (value) {
@@ -106,7 +106,7 @@ class _AddFamilyState extends State<AddFamily> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Email',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: _fullName.text.isEmpty
+        suffixIcon: _email.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
@@ -142,7 +142,7 @@ class _AddFamilyState extends State<AddFamily> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'Confirm Password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: _fullName.text.isEmpty
+        suffixIcon: _confirmPassword.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
@@ -179,7 +179,7 @@ class _AddFamilyState extends State<AddFamily> {
         labelStyle: const TextStyle(fontSize: 20),
         hintText: 'password',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: _fullName.text.isEmpty
+        suffixIcon: _password.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
@@ -304,7 +304,7 @@ class _AddFamilyState extends State<AddFamily> {
         bottomNavigationBar: SizedBox(
           height: 80,
           child: BottomAppBar(
-            color: Colors.brown,
+            color: color.AppColor.homeSecondaryTheme,
             child: Icon(
               Icons.home,
               color: color.AppColor.homePageTheme,
