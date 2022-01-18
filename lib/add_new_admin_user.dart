@@ -513,7 +513,7 @@ class _AddNewAdminState extends State<AddNewAdmin> {
                         size: 80,
                       ),
                       Expanded(child: Container()),
-                      Icon(Icons.menu, size: 40, color: Colors.black),
+                      const Icon(Icons.menu, size: 40, color: Colors.black),
                     ],
                   ),
                 ),

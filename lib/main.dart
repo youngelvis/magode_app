@@ -12,6 +12,7 @@ import 'package:magode_app/login_page.dart';
 import 'package:magode_app/pay_bills.dart';
 // import 'package:magode_app/pay_bills.dart';
 import 'package:magode_app/pay_dues.dart';
+import 'package:magode_app/signup_page.dart';
 import 'package:magode_app/update_members_info.dart';
 import 'package:magode_app/verify_new_staff.dart';
 
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: SignIN(),
+      home: SignUp(),
     );
   }
 }
