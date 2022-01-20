@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
 class FindZone extends StatefulWidget {
   const FindZone({Key? key}) : super(key: key);
@@ -121,7 +121,7 @@ class _FindZoneState extends State<FindZone> {
           bottomNavigationBar: SizedBox(
             height: 80,
             child: BottomAppBar(
-              color: Colors.brown[600],
+              color: color.AppColor.homeSecondaryTheme,
               child: Icon(
                 Icons.home,
                 color: color.AppColor.homePageTheme,

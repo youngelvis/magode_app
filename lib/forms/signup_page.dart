@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -342,7 +342,7 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 'For residents and the people who own/run a business in Magodo Estate',
                 style: TextStyle(fontSize: 20),
               ),

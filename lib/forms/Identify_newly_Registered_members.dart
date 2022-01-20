@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
 class Indentify_NR_Members extends StatefulWidget {
   const Indentify_NR_Members({Key? key}) : super(key: key);
@@ -342,7 +342,8 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
                         size: 80,
                       ),
                       Expanded(child: Container()),
-                      Icon(Icons.menu, size: 40, color: Colors.black),
+                      Icon(Icons.menu, size: 40, color: Colors.black,
+                      ),
                     ],
                   ),
                 ),
@@ -452,7 +453,7 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
          bottomNavigationBar: SizedBox(
               height: 80,
               child: BottomAppBar(
-                color: Colors.brown,
+                color: color.AppColor.homeSecondaryTheme,
                 child: Icon(
                   Icons.home,
                   color: color.AppColor.homePageTheme,

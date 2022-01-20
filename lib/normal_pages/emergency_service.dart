@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
 class EmergencyService extends StatelessWidget {
   const EmergencyService({Key? key}) : super(key: key);
@@ -68,6 +68,7 @@ class EmergencyService extends StatelessWidget {
                                       color: color.AppColor.homePageBackground,
                                       fontWeight: FontWeight.w800),
                                 ),
+                                
                                 const SizedBox(
                                   height: 30,
                                 ),

@@ -1,8 +1,8 @@
 // ignore_for_file: dead_code
 
 import 'package:flutter/material.dart';
-import 'package:magode_app/unordered_list.dart';
-import 'colors.dart' as color;
+import 'package:magode_app/components/unordered_list.dart';
+import '../components/colors.dart' as color;
 
 class RulesPage extends StatelessWidget {
   const RulesPage({Key? key}) : super(key: key);

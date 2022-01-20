@@ -1,26 +1,26 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
-class AddFamily extends StatefulWidget {
-  const AddFamily({Key? key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({Key? key}) : super(key: key);
 
   @override
-  _AddFamilyState createState() => _AddFamilyState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _AddFamilyState extends State<AddFamily> {
+class _ForgotPasswordState extends State<ForgotPassword> {
+  //varables
   final _formKey = GlobalKey<FormState>();
-  final _fullName = TextEditingController();
+  final residentCode = TextEditingController();
   final _phoneNumber = TextEditingController();
   final _email = TextEditingController();
-  final _password = TextEditingController();
-  final _confirmPassword = TextEditingController();
+  //methods
 
-  Widget _buildFullName() {
+  Widget _buildResidentCode() {
     return TextFormField(
-      controller: _fullName,
+      controller: residentCode,
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 15),
         enabledBorder: const OutlineInputBorder(
@@ -31,24 +31,25 @@ class _AddFamilyState extends State<AddFamily> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Full name',
+        labelText: 'Resident Code',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Full name',
+        hintText: 'Resident Code',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: _fullName.text.isEmpty
+        suffixIcon: residentCode.text.isEmpty
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => _fullName.clear(),
+                onPressed: () => residentCode.clear(),
               ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'please type your Full name';
+          return 'please type your Resident code';
         } else {
           return null;
         }
       },
+      keyboardType: TextInputType.number,
       textInputAction: TextInputAction.done,
     );
   }
@@ -79,7 +80,7 @@ class _AddFamilyState extends State<AddFamily> {
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'please type your Full name';
+          return 'please type your First name';
         } else {
           return null;
         }
@@ -125,127 +126,45 @@ class _AddFamilyState extends State<AddFamily> {
     );
   }
 
-  Widget _buildConfirmPassword() {
-    return TextFormField(
-      controller: _confirmPassword,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
-        ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Confirm Passwsord',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Confirm Password',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: _confirmPassword.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => _confirmPassword.clear(),
-              ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please confirm password';
-        } else if (value != _password.text) {
-          return 'password doesnt match';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
-
-  Widget _buildPassword() {
-    return TextFormField(
-      controller: _password,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
-        ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'password',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'password',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: _password.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => _password.clear(),
-              ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please type your Password';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _fullName.addListener(() => setState(() {}));
-    _phoneNumber.addListener(() => setState(() {}));
-    _email.addListener(() => setState(() {}));
-    _password.addListener(() => setState(() {}));
-    _confirmPassword.addListener(() => setState(() {}));
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
         body: Container(
-          color: color.AppColor.homePageBackground,
           padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: const [
-                  Icon(Icons.arrow_back, size: 40),
-                  SizedBox(
-                    width: 100,
-                  ),
-                  Text(
-                    'Add Family',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-                  )
-                ],
+              Text(
+                'Forgot Password?',
+                style: TextStyle(
+                    color: color.AppColor.homeSecondaryTheme,
+                    fontSize: 35,
+                    fontWeight: FontWeight.w900),
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
+              ),
+              Text(
+                'Reset password now.',
+                style: TextStyle(
+                    fontSize: 18, color: color.AppColor.homePageTheme),
+              ),
+              const SizedBox(
+                height: 30,
               ),
               Expanded(
                 child: OverflowBox(
                   child: SingleChildScrollView(
                     child: Form(
                       key: _formKey,
-                      child: Column(
+                      child: Container(
+                        color: color.AppColor.homePageBackground,
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            _buildFullName(),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            _buildEmail(),
+                          children: [
+                            _buildResidentCode(),
                             const SizedBox(
                               height: 10,
                             ),
@@ -253,12 +172,10 @@ class _AddFamilyState extends State<AddFamily> {
                             const SizedBox(
                               height: 10,
                             ),
-                            _buildPassword(),
+                            _buildEmail(),
                             const SizedBox(
-                              height: 10,
+                              height: 30,
                             ),
-                            _buildConfirmPassword(),
-                            const SizedBox(height: 25),
                             Container(
                               width: MediaQuery.of(context).size.width,
                               height: 50,
@@ -266,9 +183,9 @@ class _AddFamilyState extends State<AddFamily> {
                                   borderRadius: BorderRadius.circular(20)),
                               child: RaisedButton(
                                   color: color.AppColor.homePageTheme
-                                      .withOpacity(0.8),
+                                      ,
                                   child: Text(
-                                    'Add Family',
+                                    'Next',
                                     style: TextStyle(
                                         color:
                                             color.AppColor.homePageBackground,
@@ -282,18 +199,9 @@ class _AddFamilyState extends State<AddFamily> {
                                     }
                                   }),
                             ),
-                            const SizedBox(
-                              height: 28,
-                            ),
-                            RaisedButton(
-                              onPressed: () {},
-                              shape: const RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      color: Colors.black, width: 2)),
-                              color: color.AppColor.homePageBackground,
-                              child: const Text('Dependents: Family Members'),
-                            ),
-                          ]),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),

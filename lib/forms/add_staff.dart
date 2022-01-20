@@ -1,44 +1,35 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
-class Verify_NE_Staff extends StatefulWidget {
-  const Verify_NE_Staff({Key? key}) : super(key: key);
+class AddStaff extends StatefulWidget {
+  const AddStaff({Key? key}) : super(key: key);
 
   @override
-  _Verify_NE_StaffState createState() => _Verify_NE_StaffState();
+  _AddStaffState createState() => _AddStaffState();
 }
 
-class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
-  String? selectStaff;
-  final StaffOptions = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+class _AddStaffState extends State<AddStaff> {
+  String? relationshipStatus;
+  final relationshipOptions = [
+    'Item 1',
+    'Item 2',
+    'Item 3',
+    'Item 4',
+    'Item 5'
+  ];
+  String? employmentStatus;
+  final employmentOptions = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 
   final _formKey = GlobalKey<FormState>();
   final residentCode = TextEditingController();
   final residentPhoneNumber = TextEditingController();
   final staffFullName = TextEditingController();
   final staffMobileNumber = TextEditingController();
-  final staffFullAddress = TextEditingController();
+  final agentDetail = TextEditingController();
   final employmentDate = TextEditingController();
-  final relationship = TextEditingController();
-  final employmentStatus = TextEditingController();
-  final identifyStatus = TextEditingController();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    residentCode.addListener(() => setState(() {}));
-    residentPhoneNumber.addListener(() => setState(() {}));
-    staffFullName.addListener(() => setState(() {}));
-    staffMobileNumber.addListener(() => setState(() {}));
-    employmentDate.addListener(() => setState(() {}));
-    relationship.addListener(() => setState(() {}));
-    employmentStatus.addListener(() => setState(() {}));
-    identifyStatus.addListener(() => setState(() {}));
-    staffFullAddress.addListener(() => setState(() {}));
 
-  }
   Widget _buildResidentPhoneNumber() {
     return TextFormField(
       controller: residentPhoneNumber,
@@ -70,7 +61,6 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
           return null;
         }
       },
-      keyboardType: TextInputType.number,
       textInputAction: TextInputAction.done,
     );
   }
@@ -124,9 +114,9 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Staff name',
+        labelText: 'Staff full name',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'staff name',
+        hintText: 'staff full name',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
         suffixIcon: residentPhoneNumber.text.isEmpty
             ? Container(width: 0)
@@ -138,6 +128,41 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'please type Staff full name';
+        } else {
+          return null;
+        }
+      },
+      textInputAction: TextInputAction.done,
+    );
+  }
+
+  Widget _buildAgentDetail() {
+    return TextFormField(
+      controller: agentDetail,
+      decoration: InputDecoration(
+        errorStyle: const TextStyle(fontSize: 15),
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black45,
+            width: 2,
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2)),
+        labelText: 'Staff contact/ Agent details',
+        labelStyle: const TextStyle(fontSize: 20),
+        hintText: 'Staff contact/ Agent details',
+        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
+        suffixIcon: agentDetail.text.isEmpty
+            ? Container(width: 0)
+            : IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () => agentDetail.clear(),
+              ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'please type staff contact or agent details';
         } else {
           return null;
         }
@@ -195,9 +220,9 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
         ),
         focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Staff phone number',
+        labelText: 'Staff mobile number',
         labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Staff phone number',
+        hintText: 'Staff mobile number (with country code)',
         hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
         suffixIcon: staffMobileNumber.text.isEmpty
             ? Container(width: 0)
@@ -213,117 +238,11 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
           return null;
         }
       },
-      keyboardType: TextInputType.number,
       textInputAction: TextInputAction.done,
     );
   }
 
   Widget _buildRelationship() {
-    return TextFormField(
-      controller: relationship,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
-        ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Relationship',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Relationship',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: relationship.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => relationship.clear(),
-              ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please type Staff full name';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
-
-  Widget _buildEmploymentStatus() {
-    return TextFormField(
-      controller: employmentStatus,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
-        ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Employment Status',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Employment Status',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: employmentStatus.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => employmentStatus.clear(),
-              ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please type Staff full name';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
-
-  Widget _buildIdentifyStatus() {
-    return TextFormField(
-      controller: identifyStatus,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
-        ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Identify Status',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Identify Status',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: identifyStatus.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => identifyStatus.clear(),
-              ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please identify status';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
-    );
-  }
-
-  Widget _buildselectStaff() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
@@ -336,64 +255,78 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
                 borderSide: BorderSide(color: Colors.white))),
         isExpanded: true,
         hint: const Text(
-          'Select Staff',
+          'Relationship',
           style: TextStyle(fontSize: 20),
         ),
-        value: selectStaff,
+        value: relationshipStatus,
         iconSize: 35,
         icon: const Icon(Icons.arrow_drop_down, color: Colors.black45),
-        items: StaffOptions.map(buildEmploymentItem).toList(),
+        items: relationshipOptions.map(buildRelationshipItem).toList(),
         onChanged: (value) => setState(() {
-          selectStaff = value as String;
+          relationshipStatus = value as String;
         }),
-        validator: (value) => value == null ? 'please select staff' : null,
+        validator: (value) => value == null ? 'select Relationship' : null,
       ),
     );
   }
 
-  Widget _buildStaffAddress() {
-    return TextFormField(
-      controller: staffFullAddress,
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(fontSize: 15),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black45,
-            width: 2,
-          ),
+  Widget _buildEmploymentStatus() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(color: Colors.black45, width: 2)),
+      child: DropdownButtonFormField(
+        decoration: const InputDecoration(
+            errorStyle: TextStyle(fontSize: 15),
+            enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.white))),
+        isExpanded: true,
+        hint: const Text(
+          'Employment status',
+          style: TextStyle(fontSize: 20),
         ),
-        focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black, width: 2)),
-        labelText: 'Staff Address',
-        labelStyle: const TextStyle(fontSize: 20),
-        hintText: 'Staff Address',
-        hintStyle: const TextStyle(fontSize: 20, color: Colors.black45),
-        suffixIcon: staffFullAddress.text.isEmpty
-            ? Container(width: 0)
-            : IconButton(
-                icon: const Icon(Icons.close),
-                onPressed: () => staffFullAddress.clear(),
-              ),
+        value: employmentStatus,
+        iconSize: 35,
+        icon: const Icon(Icons.arrow_drop_down, color: Colors.black45),
+        items: employmentOptions.map(buildEmploymentItem).toList(),
+        onChanged: (value) => setState(() {
+          employmentStatus = value as String;
+        }),
+        validator: (value) => value == null ? 'select Employment status' : null,
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'please type staff address';
-        } else {
-          return null;
-        }
-      },
-      textInputAction: TextInputAction.done,
     );
   }
 
-  DropdownMenuItem<String> buildEmploymentItem(String StaffOptions) =>
+  // for relationship status drop down list
+  DropdownMenuItem<String> buildRelationshipItem(String relationshipOptions) =>
       DropdownMenuItem(
-          value: StaffOptions,
+          value: relationshipOptions,
           child: Text(
-            StaffOptions,
+            relationshipOptions,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ));
+  // for employment status drop down list
+  DropdownMenuItem<String> buildEmploymentItem(String employmentOptions) =>
+      DropdownMenuItem(
+          value: employmentOptions,
+          child: Text(
+            employmentOptions,
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ));
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    residentCode.addListener(() => setState(() {}));
+    residentPhoneNumber.addListener(() => setState(() {}));
+    staffFullName.addListener(() => setState(() {}));
+    staffMobileNumber.addListener(() => setState(() {}));
+    employmentDate.addListener(() => setState(() {}));
+    agentDetail.addListener(() => setState(() {}));
+
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -408,10 +341,10 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
                   children: const [
                     Icon(Icons.arrow_back, size: 40),
                     SizedBox(
-                      width: 50,
+                      width: 110,
                     ),
                     Text(
-                      'Verify Newly Employed Staff',
+                      'Add Staff',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
                     )
@@ -428,17 +361,13 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            _buildselectStaff(),
-                            const SizedBox(
-                              height: 10,
-                            ),
                             _buildResidentCode(),
                             const SizedBox(
                               height: 10,
                             ),
                             _buildResidentPhoneNumber(),
                             const SizedBox(
-                              height: 10,
+                              height: 30,
                             ),
                             _buildStaffFullName(),
                             const SizedBox(
@@ -448,23 +377,19 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
                             const SizedBox(
                               height: 10,
                             ),
-                            _buildStaffAddress(),
-                            const SizedBox(
-                              height: 10,
-                            ),
                             _buildRelationship(),
                             const SizedBox(
                               height: 10,
                             ),
                             _buildEmploymentDate(),
-                            const SizedBox(
+                             const SizedBox(
                               height: 10,
                             ),
                             _buildEmploymentStatus(),
                             const SizedBox(
                               height: 10,
                             ),
-                            _buildIdentifyStatus(),
+                            _buildAgentDetail(),
                             const SizedBox(height: 25),
                             Container(
                               width: MediaQuery.of(context).size.width,
@@ -472,10 +397,9 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20)),
                               child: RaisedButton(
-                                  color: color.AppColor.homePageTheme
-                                      .withOpacity(0.8),
+                                  color: color.AppColor.homePageTheme.withOpacity(0.8),
                                   child: Text(
-                                    'verify Staff',
+                                    'Add New Staff',
                                     style: TextStyle(
                                         color:
                                             color.AppColor.homePageBackground,
@@ -489,26 +413,13 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
                                     }
                                   }),
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: RaisedButton(
-                                  color: color.AppColor.homePageTheme
-                                      .withOpacity(0.8),
-                                  child: Text(
-                                    'Decline Verification',
-                                    style: TextStyle(
-                                        color:
-                                            color.AppColor.homePageBackground,
-                                        fontSize: 20),
-                                  ),
-                                  onPressed: () {}),
-                            )
+                            const SizedBox(height: 28,),
+                            RaisedButton(onPressed: (){},
+                            shape:const RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.black,
+                              width: 2)),
+                            color: color.AppColor.homePageBackground,
+                            child: const Text('Staff'),),
                           ],
                         ),
                       ),
@@ -517,10 +428,9 @@ class _Verify_NE_StaffState extends State<Verify_NE_Staff> {
                 )
               ],
             )),
-        bottomNavigationBar: SizedBox(
+             bottomNavigationBar: SizedBox(
           height: 80,
           child: BottomAppBar(
-            color: Colors.brown,
             child: Icon(
               Icons.home,
               color: color.AppColor.homePageTheme,

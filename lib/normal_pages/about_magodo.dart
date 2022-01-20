@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);

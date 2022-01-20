@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
 class AddNewAdmin extends StatefulWidget {
   const AddNewAdmin({Key? key}) : super(key: key);

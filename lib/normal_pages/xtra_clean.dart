@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart' as color;
+import '../components/colors.dart' as color;
 
 class XtraCleanPage extends StatelessWidget {
   const XtraCleanPage({Key? key}) : super(key: key);

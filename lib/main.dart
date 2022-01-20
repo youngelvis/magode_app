@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:magode_app/Identify_newly_Registered_members.dart';
-import 'package:magode_app/add_family.dart';
-import 'package:magode_app/add_new_admin_user.dart';
-import 'package:magode_app/add_staff.dart';
-import 'package:magode_app/authorize_user.dart';
-import 'package:magode_app/change_password.dart';
-import 'package:magode_app/edit_profile.dart';
-import 'package:magode_app/find_a_zone.dart';
-import 'package:magode_app/generate_passcode.dart';
-import 'package:magode_app/login_page.dart';
-import 'package:magode_app/pay_bills.dart';
+import 'package:magode_app/forms/Identify_newly_Registered_members.dart';
+import 'package:magode_app/forms/add_family.dart';
+import 'package:magode_app/forms/add_new_admin_user.dart';
+import 'package:magode_app/forms/add_staff.dart';
+import 'package:magode_app/forms/authorize_user.dart';
+import 'package:magode_app/forms/change_password.dart';
+import 'package:magode_app/forms/edit_profile.dart';
+import 'package:magode_app/forms/find_a_zone.dart';
+import 'package:magode_app/forms/forgot_password.dart';
+import 'package:magode_app/forms/generate_passcode.dart';
+import 'package:magode_app/forms/login_page.dart';
+import 'package:magode_app/forms/pay_bills.dart';
 // import 'package:magode_app/pay_bills.dart';
-import 'package:magode_app/pay_dues.dart';
-import 'package:magode_app/signup_page.dart';
-import 'package:magode_app/update_members_info.dart';
-import 'package:magode_app/verify_new_staff.dart';
+import 'package:magode_app/forms/pay_dues.dart';
+import 'package:magode_app/forms/signup_page.dart';
+import 'package:magode_app/forms/update_members_info.dart';
+import 'package:magode_app/forms/verify_new_staff.dart';
+import 'package:magode_app/normal_pages/sign_up_successful_page.dart';
 
 // import 'package:magode_app/xtra_clean.dart';
 
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: SignUp(),
+      home: const SignUpSuccessful(),
     );
   }
 }
