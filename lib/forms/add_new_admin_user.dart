@@ -509,7 +509,7 @@ class _AddNewAdminState extends State<AddNewAdmin> {
                   child: Row(
                     children: [
                       const Icon(
-                        CupertinoIcons.person_crop_circle,
+                        Icons.account_circle,
                         size: 80,
                       ),
                       Expanded(child: Container()),

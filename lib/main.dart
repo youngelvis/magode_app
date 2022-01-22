@@ -17,6 +17,10 @@ import 'package:magode_app/forms/signup_page.dart';
 import 'package:magode_app/forms/update_members_info.dart';
 import 'package:magode_app/forms/verify_new_staff.dart';
 import 'package:magode_app/normal_pages/sign_up_successful_page.dart';
+import 'package:magode_app/profile_navs/profile_1.dart';
+import 'package:magode_app/profile_navs/profile_2.dart';
+import 'package:magode_app/reports_pages/reports_1.dart';
+import 'package:magode_app/reports_pages/reports_2.dart';
 
 // import 'package:magode_app/xtra_clean.dart';
 
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: const Indentify_NR_Members(),
+      home: const Report_2(),
     );
   }
 }
