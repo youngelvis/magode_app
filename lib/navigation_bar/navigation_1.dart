@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/colors.dart' as color;
 
 class Navigation1 extends StatelessWidget {
@@ -8,142 +8,150 @@ class Navigation1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: SingleChildScrollView(
+      child: OverflowBox(
         child: ListView(
           children: [
             DrawerHeader(
-              child: Row(
-                children: [
-                  Row(
-                    children:  [
-                      IconButton(icon: Icon(Icons.arrow_back, size: 40, color: color.AppColor.homePageTheme,) ,onPressed: (){},),
-                      
-                     const SizedBox(
-                        width: 100,
-                      ),
-                      Text(
-                        'Navigation',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800,
-                            color: color.AppColor.homeSecondaryTheme),
-                      )
-                    ],
-                  ),
-                ],
+              child: Container(
+                padding: const EdgeInsets.only(
+                  top: 80,
+                  left: 50,
+                  right: 25,
+                ),
+                child: Text(
+                  'Navigation',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w800,
+                      color: color.AppColor.homePageTheme),
+                ),
               ),
-              decoration: BoxDecoration(color: color.AppColor.homePageTheme),
+              decoration:
+                  BoxDecoration(color: color.AppColor.homeSecondaryTheme),
             ),
             ListTile(
-              title: Text('profile'),
+              title: const Text(
+                'profile',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
-                icon: Icon(
-                  CupertinoIcons.person_crop_circle,
-                  color: color.AppColor.homeSecondaryTheme,
-
-
-                ),
+                icon: Icon(Icons.account_circle,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
             ),
             ListTile(
-              title: Text('Get Passcode'),
+              title: const Text(
+                'Get Passcode',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
-                icon: Icon(
-                  Icons.person_add_sharp,
-                  color: color.AppColor.homeSecondaryTheme,
-                ),
+                icon: Icon(Icons.person_add_sharp,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
             ),
             ListTile(
-              title: Text('Get Bulk Passcodes'),
+              title: const Text(
+                'Get Bulk Passcodes',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
-                icon: Icon(
-                  Icons.group_add,
-                  color: color.AppColor.homeSecondaryTheme,
-                ),
+                icon: Icon(Icons.group_add,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
             ),
             ListTile(
-              title: Text('Person Passcodes'),
+              title: const Text(
+                'Person Passcodes',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
-                icon: Icon(
-                  Icons.person,
-                  color: color.AppColor.homeSecondaryTheme,
-                ),
+                icon: Icon(Icons.person,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
             ),
             ListTile(
-              title: Text('View Passcodes'),
+              title: const Text(
+                'View Passcodes',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
                 icon: Icon(
                   Icons.list,
                   color: color.AppColor.homeSecondaryTheme,
+                  size: 30,
                 ),
                 onPressed: () {},
               ),
+            ),
+            const SizedBox(
+              height: 10
             ),
             Divider(
               color: color.AppColor.homePageTheme,
+              thickness: 1,
+            ),
+             const SizedBox(
+              height: 10
             ),
             ListTile(
-              title: Text('View Passcodes'),
+              title: const Text(
+                'Find a Zone',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
-                icon: Icon(
-                  Icons.list,
-                  color: color.AppColor.homeSecondaryTheme,
-                ),
+                icon: Icon(Icons.location_pin,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
             ),
             ListTile(
-              title: Text('Find a Zone'),
+              title: const Text(
+                'News',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
-                icon: Icon(
-                  Icons.location_pin,
-                  color: color.AppColor.homeSecondaryTheme,
-                ),
+                icon: Icon(Icons.messenger_sharp,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
             ),
             ListTile(
-              title: Text('News'),
+              title: const Text(
+                'Contact Us',
+                style: TextStyle(fontSize: 17),
+              ),
               leading: IconButton(
-                icon: Icon(
-                  Icons.messenger_sharp,
-                  color: color.AppColor.homeSecondaryTheme,
-                ),
+                icon: Icon(Icons.perm_phone_msg,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
+            ),
+             const SizedBox(
+              height: 10
+            ),
+            Divider(
+              color: color.AppColor.homePageTheme,
+              thickness: 1,
+            ),
+             const SizedBox(
+              height: 10
             ),
             ListTile(
-              title: Text('Contact Us'),
-              leading: IconButton(
-                icon: Icon(
-                  Icons.perm_phone_msg,
-                  color: color.AppColor.homeSecondaryTheme,
-                ),
-                onPressed: () {},
+              title: const Text(
+                'Log Out',
+                style: TextStyle(fontSize: 17),
               ),
-            ),
-             Divider(
-               color: color.AppColor.homePageTheme,
-             ),
-             ListTile(
-              title: Text('Log Out'),
               leading: IconButton(
-                icon: Icon(
-                  Icons.logout,
-                  color: color.AppColor.homeSecondaryTheme,
-
-                ),
+                icon: Icon(FontAwesomeIcons.signOutAlt,
+                    color: color.AppColor.homeSecondaryTheme, size: 30),
                 onPressed: () {},
               ),
             ),
           ],
-          
         ),
       ),
     );

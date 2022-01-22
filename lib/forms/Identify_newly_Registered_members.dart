@@ -2,6 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:magode_app/navigation_bar/navigation_1.dart';
+import 'package:magode_app/navigation_bar/navigation_2.dart';
+import 'package:magode_app/navigation_bar/navigation_3.dart';
 import '../components/colors.dart' as color;
 
 class Indentify_NR_Members extends StatefulWidget {
@@ -321,89 +324,106 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
     _status.addListener(() => setState(() {}));
   }
 
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
-        body: Container(
-          color: color.AppColor.homePageBackground,
-          child: Column(
-            children: [
-              Container(
-                height: 150,
-                decoration: BoxDecoration(color: color.AppColor.homePageTheme),
-                child: Container(
-                  padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
-                  child: Row(
-                    children: [
-                      Icon(
-                        CupertinoIcons.person_crop_circle,
-                        size: 80,
+          key: _scaffoldKey,
+          drawer: Navigation_3(),
+          body: Stack(children: [
+            Container(
+              color: color.AppColor.homePageBackground,
+              child: Column(
+                children: [
+                  Container(
+                    height: 150,
+                    decoration:
+                        BoxDecoration(color: color.AppColor.homePageTheme),
+                    child: Container(
+                      padding:
+                          const EdgeInsets.only(top: 40, left: 30, right: 30),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.account_circle,
+                            size: 80,
+                            color: Colors.white,
+                          ),
+                          Expanded(child: Container()),
+                          IconButton(
+                            onPressed: () {
+                              _scaffoldKey.currentState!.openDrawer();
+                            },
+                            icon: const Icon(
+                              Icons.menu,
+                              size: 40,
+                              color: Colors.black,
+                            ),
+                          )
+                        ],
                       ),
-                      Expanded(child: Container()),
-                      Icon(Icons.menu, size: 40, color: Colors.black,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              const Text('Identify Newly Register Members',
-                  style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w800)),
-              const SizedBox(
-                height: 40,
-              ),
-              Expanded(
-                child: OverflowBox(
-                  child: SingleChildScrollView(
-                    child: Form(
-                      key: _formKey,
-                      child: Container(
-                        padding: const EdgeInsets.only( left: 30, right: 30),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              _selectResident(),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              _buildFirstName(),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              _buildMobileNumber(),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              _buildAddress(),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              _buildZone(),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              _buildValidityStart(),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              _buildValidityEnds(),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              _buildStatus(),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Container(
+                  const SizedBox(height: 30),
+                  const Text('Identify Newly Register Members',
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800)),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Expanded(
+                    child: OverflowBox(
+                      child: SingleChildScrollView(
+                        child: Form(
+                          key: _formKey,
+                          child: Container(
+                            padding: const EdgeInsets.only(left: 30, right: 30),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  _selectResident(),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  _buildFirstName(),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  _buildMobileNumber(),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  _buildAddress(),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  _buildZone(),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  _buildValidityStart(),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  _buildValidityEnds(),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  _buildStatus(),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Container(
                                     width: MediaQuery.of(context).size.width,
                                     height: 60,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: RaisedButton(
                                         color: color.AppColor.homePageTheme,
                                         child: Text(
@@ -421,12 +441,15 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
                                           }
                                         }),
                                   ),
-                                  const SizedBox(height: 15,),
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
                                   Container(
                                     width: MediaQuery.of(context).size.width,
                                     height: 60,
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: RaisedButton(
                                         color: color.AppColor.homePageTheme,
                                         child: Text(
@@ -436,32 +459,29 @@ class _Indentify_NR_MembersState extends State<Indentify_NR_Members> {
                                                   .AppColor.homePageBackground,
                                               fontSize: 20),
                                         ),
-                                        onPressed: () {
-                                          
-                                        }),
+                                        onPressed: () {}),
                                   ),
                                   SizedBox(height: 130)
-                            ]),
+                                ]),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
-        ),
-         bottomNavigationBar: SizedBox(
-              height: 80,
-              child: BottomAppBar(
-                color: color.AppColor.homeSecondaryTheme,
-                child: Icon(
-                  Icons.home,
-                  color: color.AppColor.homePageTheme,
-                  
-                ),
+            ),
+          ]),
+          bottomNavigationBar: SizedBox(
+            height: 80,
+            child: BottomAppBar(
+              color: color.AppColor.homeSecondaryTheme,
+              child: Icon(
+                Icons.home,
+                color: color.AppColor.homePageTheme,
               ),
-            )
-      ),
+            ),
+          )),
     );
   }
 }

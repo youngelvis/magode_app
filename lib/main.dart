@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpSuccessful(),
+      home: const Indentify_NR_Members(),
     );
   }
 }
