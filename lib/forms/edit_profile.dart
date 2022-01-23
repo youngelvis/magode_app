@@ -438,120 +438,121 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-        child: Scaffold(
-            body: Container(
-              color: color.AppColor.homePageBackground,
-              padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
-              child: Column(
-                children: [
-                  Row(
-                    children: const [
-                      Icon(Icons.arrow_back, size: 40),
-                      SizedBox(
-                        width: 110,
-                      ),
-                      Text(
-                        'Edit Profile',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800),
-                      )
-                    ],
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      child: Scaffold(
+        body: Container(
+          color: color.AppColor.homePageBackground,
+          padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
+          child: Column(
+            children: [
+              Row(
+                children: const [
+                  Icon(Icons.arrow_back, size: 40),
+                  SizedBox(
+                    width: 110,
                   ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Expanded(
-                    child: OverflowBox(
-                      child: SingleChildScrollView(
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                _buildResidentCode(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildFullName(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildPhoneNumber(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildEmail(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildClassification(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildStatus(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildValidityStartDate(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildValidityEndsDate(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildZone(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildAddress(),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                _buildResidentType(),
-                                const SizedBox(
-                                  height: 25,
-                                ),
-                                Container(
-                                  width: 180,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: RaisedButton(
-                                      color: color.AppColor.homePageTheme,
-                                      child: Text(
-                                        'Update Profile',
-                                        style: TextStyle(
-                                            color: color
-                                                .AppColor.homePageBackground,
-                                            fontSize: 20),
-                                      ),
-                                      onPressed: () {
-                                        final isValid =
-                                            _formKey.currentState!.validate();
-                                        if (isValid) {
-                                          _formKey.currentState?.save();
-                                        }
-                                      }),
-                                )
-                              ]),
-                        ),
-                      ),
-                    ),
-                  ),
+                  Text(
+                    'Edit Profile',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                  )
                 ],
               ),
-            ),
-            bottomNavigationBar: SizedBox(
-              height: 80,
-              child: BottomAppBar(
-                color: color.AppColor.homeSecondaryTheme,
-                child: Icon(
-                  Icons.home,
-                  color: color.AppColor.homePageTheme,
+              const SizedBox(
+                height: 40,
+              ),
+              Expanded(
+                child: OverflowBox(
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            _buildResidentCode(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildFullName(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildPhoneNumber(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildEmail(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildClassification(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildStatus(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildValidityStartDate(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildValidityEndsDate(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildZone(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildAddress(),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            _buildResidentType(),
+                            const SizedBox(
+                              height: 25,
+                            ),
+                            Container(
+                              width: 180,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: RaisedButton(
+                                  color: color.AppColor.homePageTheme,
+                                  child: Text(
+                                    'Update Profile',
+                                    style: TextStyle(
+                                        color:
+                                            color.AppColor.homePageBackground,
+                                        fontSize: 20),
+                                  ),
+                                  onPressed: () {
+                                    final isValid =
+                                        _formKey.currentState!.validate();
+                                    if (isValid) {
+                                      _formKey.currentState?.save();
+                                    }
+                                  }),
+                            )
+                          ]),
+                    ),
+                  ),
                 ),
               ),
-            )));
+            ],
+          ),
+        ),
+        bottomNavigationBar: SizedBox(
+          height: 80,
+          child: BottomAppBar(
+            color: color.AppColor.homeSecondaryTheme,
+            child: Icon(
+              Icons.home,
+              color: color.AppColor.homePageTheme,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

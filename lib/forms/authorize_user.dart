@@ -111,12 +111,12 @@ class _AuthorizedUsersState extends State<AuthorizedUsers> {
             ? Container(width: 0)
             : IconButton(
                 icon: const Icon(Icons.close),
-                onPressed: () => _fullName.clear(),
+                onPressed: () => _phoneNumber.clear(),
               ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'please type your Full name';
+          return 'please type your phone number';
         } else {
           return null;
         }

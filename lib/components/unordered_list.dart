@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'colors.dart' as color;
 
@@ -28,7 +30,7 @@ class UnorderedListItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("• "),
+       const Text("• "),
         Expanded(
           child: Text(text,
           style: TextStyle(

@@ -5,10 +5,12 @@ import 'package:magode_app/forms/add_new_admin_user.dart';
 import 'package:magode_app/forms/add_staff.dart';
 import 'package:magode_app/forms/authorize_user.dart';
 import 'package:magode_app/forms/change_password.dart';
+import 'package:magode_app/forms/contact_us.dart';
 import 'package:magode_app/forms/edit_profile.dart';
 import 'package:magode_app/forms/find_a_zone.dart';
 import 'package:magode_app/forms/forgot_password.dart';
 import 'package:magode_app/forms/generate_passcode.dart';
+import 'package:magode_app/forms/get_passcode.dart';
 import 'package:magode_app/forms/login_page.dart';
 import 'package:magode_app/forms/pay_bills.dart';
 // import 'package:magode_app/pay_bills.dart';
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: const Report_2(),
+      home: const GetPasscode(),
     );
   }
 }
