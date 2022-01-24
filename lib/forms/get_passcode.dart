@@ -12,6 +12,7 @@ class GetPasscode extends StatefulWidget {
 }
 
 class _GetPasscodeState extends State<GetPasscode> {
+  bool _notRobot = false;
   // varable
   final _formKey = GlobalKey<FormState>();
   final _fullName = TextEditingController();
@@ -89,10 +90,22 @@ class _GetPasscodeState extends State<GetPasscode> {
     );
   }
 
+// state for color of check box
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.blue;
+    }
+    return Colors.grey;
+  }
+
 // states
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _fullName.addListener(() => setState(() {}));
     _phoneNumber.addListener(() => setState(() {}));
@@ -146,8 +159,33 @@ class _GetPasscodeState extends State<GetPasscode> {
                                     height: 10,
                                   ),
                                   _buildPhoneNumber(),
+
                                   const SizedBox(
-                                    height: 40,
+                                    height: 10,
+                                  ),
+
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                        checkColor: Colors.black,
+                                        fillColor:
+                                            MaterialStateProperty.resolveWith(
+                                                getColor),
+                                        value: _notRobot,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _notRobot = value!;
+                                          });
+                                        },
+                                      ),
+                                      const Text('i\'m not a robot',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                          )),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
                                   ),
                                   // there is need for check box
                                   Container(
@@ -176,6 +214,9 @@ class _GetPasscodeState extends State<GetPasscode> {
                                 ],
                               ),
                             ),
+                             const SizedBox(
+                                    height: 20,
+                                  ),
                             const Divider(
                               thickness: 3,
                               color: Colors.black26,
@@ -203,7 +244,6 @@ class _GetPasscodeState extends State<GetPasscode> {
                                     height: 20,
                                   ),
                                   Container(
-                                    
                                     height: 130,
                                     width: 130,
                                     decoration: const BoxDecoration(

@@ -11,6 +11,7 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  bool _notRobot = false;
   //varables
   final _formKey = GlobalKey<FormState>();
   final residentCode = TextEditingController();
@@ -126,6 +127,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     );
   }
 
+// state for color of check box
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.blue;
+    }
+    return Colors.grey;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -177,13 +191,55 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               height: 30,
                             ),
                             Container(
+                              height: 70,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.withOpacity(0.2)),
+                              child: Row(
+                                children: [
+                                  Checkbox(
+                                    checkColor: Colors.black,
+                                    fillColor:
+                                        MaterialStateProperty.resolveWith(
+                                            getColor),
+                                    value: _notRobot,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        _notRobot = value!;
+                                       
+                                      });
+                                    },
+                                  ),
+                                  const Text('i\'m not a robot',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                      )),
+                                  Expanded(child: Container(),),
+
+                                  Container(
+                                    margin: const  EdgeInsets.only(right: 10),
+                                    height: 65,
+                                    width:  75,
+                                    decoration: const BoxDecoration(
+                                      image:DecorationImage(
+                                        image: AssetImage("assets/recaptcha.png"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  )
+                                    
+                                ],
+                              ),
+                            ),
+                             const SizedBox(
+                              height: 30,
+                            ),
+                            Container(
                               width: MediaQuery.of(context).size.width,
                               height: 50,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20)),
                               child: RaisedButton(
-                                  color: color.AppColor.homePageTheme
-                                      ,
+                                  color: color.AppColor.homePageTheme,
                                   child: Text(
                                     'Next',
                                     style: TextStyle(

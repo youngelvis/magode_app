@@ -11,6 +11,8 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool residential = false;
+  bool commercial = false;
   //varables
   String? zone;
   final zoneOptions = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
@@ -322,6 +324,19 @@ class _SignUpState extends State<SignUp> {
     _lastName.addListener(() => setState(() {}));
   }
 
+// state for color of check box
+  Color getColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.blue;
+    }
+    return Colors.grey;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -398,6 +413,44 @@ class _SignUpState extends State<SignUp> {
                             const SizedBox(
                               height: 20,
                             ),
+                            Row(
+                              children: [
+                                Checkbox(
+                                  checkColor: Colors.black,
+                                  fillColor: MaterialStateProperty.resolveWith(
+                                      getColor),
+                                  value: residential,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      residential = value!;
+                                      commercial = !value;
+                                    });
+                                  },
+                                ),
+                                const Text('Residential',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                )
+                                ),
+                                const SizedBox(width: 30,),
+                                Checkbox(
+                                  checkColor: Colors.black,
+                                  fillColor: MaterialStateProperty.resolveWith(
+                                      getColor),
+                                  value: commercial,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      commercial = value!;
+                                      residential = !value;
+                                    });
+                                  },
+                                ),
+                                const Text('Commercial',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ))
+                              ],
+                            ),
                             Container(
                               width: MediaQuery.of(context).size.width,
                               height: 50,
@@ -418,6 +471,15 @@ class _SignUpState extends State<SignUp> {
                                         _formKey.currentState!.validate();
                                     if (isValid) {
                                       _formKey.currentState?.save();
+                                      if(residential){
+                                        // create residential home page
+                                      }
+                                      else if(commercial){
+                                        // create commercial page
+                                      }
+                                      else{
+                                        // throw error
+                                      }
                                     }
                                   }),
                             ),
